@@ -10,14 +10,14 @@ class IntervalsController < ApplicationController
 
     @filtered_intervals = @intervals.reject{|x|
     	if(params[:date].nil? && params.has_key?("date"))
-		true
+		false
 	else
 		day = sprintf("%d-%d-%d", x.start_time.month, x.start_time.day, x.start_time.year)
 		params[:date] == day
 	end
     }.reject{|x|
     	if(params[:camera_angle].nil? && params.has_key?("camera_angle"))
-		true
+		false
 	else
 		params[:camera_angle] == x.camera_angle
 	end
@@ -100,3 +100,4 @@ class IntervalsController < ApplicationController
     end
   end
 end
+
