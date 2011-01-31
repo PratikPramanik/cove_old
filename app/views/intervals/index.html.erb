@@ -12,19 +12,23 @@
 					<% end %>
 				</select>
 			</fieldset>
-			<!--<fieldset>
+			<fieldset>
 				<legend>Camera Angle</legend>
 				<ul>
 					<li>
-						<%= link_to "Rear 2", intervals_path(add_params :camera_angle => 'rear2') %>
+						<label>
+							<input type="radio" name="camera_angle" value="" <%= params[:camera_angle].nil? || params[:camera_angle] == "" ? "checked='checked'" : "" %>/>Any
+						</label>
 					</li>
 					<% @angles.each do |a| %>
-						<li>
-							<%= link_to a.camera_angle, intervals_path(add_params :camera_angle => a.camera_angle) %>
+						<li class="filtercontrol cameraangle_<%= a.camera_angle.gsub(" ", "") %>">
+							<label>
+								<input type="radio" name="camera_angle" value="<%= a.camera_angle %>" <%= params[:camera_angle] == a.camera_angle ? "checked='checked'" : "" %>/><%= a.camera_angle %>
+							</label>
 						</li>
 					<% end %>
 				</ul>
-			</fieldset>-->
+			</fieldset>
 			<fieldset>
 				<legend>Search</legend>
 				<input type="text" name="search" value="<%= params[:search] %>" />
