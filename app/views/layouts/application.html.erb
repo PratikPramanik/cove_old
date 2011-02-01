@@ -45,14 +45,8 @@
 			<%end%>
 		</div>
 		<div class="grid_4 search_holder prefix_12">
-      <form action="/intervals" method="GET" id="search_bar">
-	      <label>
-		      Search:
-		      <input type="text" id="global_search" name="search" Placeholder="Enter Query" />
-	      </label>
-	      <input type="submit" id="global_search_submit" />
-      </form>
-    </div>
+			<%= render "intervals/search" if current_user %>
+		</div>
 		<br style="clear: both"/>
 	</header>
 
@@ -67,37 +61,12 @@
 	</nav>
 
 <div class="content container_16">
-
-						<header class="container_16">
-						<h1 class="grid_5">COVE</h1>
-						<div class="grid_4 user_info prefix_7">
-							<%if !current_user %>
-								<a class="signup_link" href="/sign_up">Sign up</a>
-								<a class="login_link" href="/login">Login</a>
-							<%else%>
-								Logged in as: <%=current_user.email%>
-								<a class="logout_link" href="/logout">Logout</a>
-							<%end%>
-						</div>
-						<!--<div class="grid_4 search_holder prefix_12">
-							<%#=link_to "Intervals", intervals_path %>
-							<%#= render "intervals/search" %>
-						</div>-->
-						<br style="clear: both"/>
-						</header>
-
-						<nav class="top_nav container_16">
-						<ul class= "grid_16">
-							<li><%= link_to "Home", root_path %></li>
-							<li><%= link_to "Intervals", intervals_path %></li>
-							<li><%= link_to "" %></li>
-							<li><%= link_to "" %></li>
-							<li><%= link_to "" %></li>
-						</ul>
-						</nav>
-
 						<div class="content container_16">
-							<h1 class="cove_header">COVE</h1>
+
+							<%= display_flash %>
+							<%= yield %>
+
+						</div>
 
 <footer class="container_16">
 		<hr class="grid_16"/>
@@ -105,16 +74,6 @@
 	<h5 class="grid_4 copyright prefix_2">Copyright 2011 DK ET AL</h5>
 		<hr class="grid_16"/>
 <footer>
-
-							<%= display_flash %>
-							<%= yield %>
-
-						</div>
-
-						<footer class="container_16">
-						<h5 class="grid_10 credits">This site was built by the W11 COGS 160 Class</h5>
-						<h5 class="grid_4 copyright prefix_2">Copyright 2011 DK ET AL</h5>
-						</footer>
 
 						<!--[if lt IE 7 ]>
 						<script src="js/libs/dd_belatedpng.js"></script>

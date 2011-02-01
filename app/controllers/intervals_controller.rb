@@ -1,19 +1,10 @@
 class IntervalsController < ApplicationController
     before_filter :authenticate_user!
-  # GET /intervals
-  # GET /intervals.xml
-  def index
-    intervals = Interval.find(:all, :order => 'start_time').map{|int|
-	duration = (int.end_time - int.start_time)
-	hours = (duration / (60*60)).floor
-	minutes = ((duration - hours*60*60)/60).floor
-	int[:duration] = sprintf("%02dh%02dm", hours, minutes);
-	int
-    }
-    @angles = intervals.map {|x| x.camera_angle}.uniq.sort
-    @days = intervals.map{|x| x.start_time}.map {|x|
-	sprintf("%d-%d-%d", x.month, x.day, x.year)
-    }.uniq
+	# GET /intervals
+	# GET /intervals.xml
+	def index
+		@angles = Interval.unique_angles
+		@days = Interval.unique_days
 
 		date_filter = (params[:date].nil? || params[:date] == "") ? false : params[:date]
 		conditions = []
