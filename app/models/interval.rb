@@ -30,5 +30,8 @@ class Interval < ActiveRecord::Base
 		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
 		where(query, *args)
 	end
-	
+
+  has_many :interval_tags, :dependent => :destroy
+  has_many :tags, :through => :interval_tags
 end
+
