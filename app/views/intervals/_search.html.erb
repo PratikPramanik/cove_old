@@ -1,0 +1,55 @@
+<style media="screen" type="text/css">
+
+#search_bar{
+	float: right;
+}
+
+#search_box{
+	width: 400px;
+	font-size:1em;
+	height: 1.2em;
+	padding: 13px 10px;
+	margin-right: 1px;
+}
+
+#search_box input.search:focus {
+ 	border: 1px solid #639bcf;
+ }
+
+button{
+	display:relative;
+	font-size:12px;
+	height:30px;
+	width: 60px;
+}
+
+button:hover{
+	background-color:#CCCCCC;
+}
+
+/*a.button{
+	display: inline;
+	height:26px;
+	width: 66px;
+	padding: 2px;
+	color:#666666;
+	text-decoration:none;
+	background:url('button.png') no-repeat 0px-0px;
+}
+
+
+a.button:hover{
+	color:#333333;
+	background:url('button.png') no-repeat 0px-30px;
+	*/
+
+}
+</style>
+<form action="/intervals" method="GET" id="search_bar">
+	<label>
+		Search:
+		<input type="text" id="global_search" name="search" Placeholder="Enter Query" />
+	</label>
+	<input type="submit" id="global_search_submit" />
+</form>
+
