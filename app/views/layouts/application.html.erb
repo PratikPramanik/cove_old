@@ -44,7 +44,15 @@
 				<a class="logout_link" href="/logout">Logout</a>
 			<%end%>
 		</div>
-		<div class="grid_4 search_holder prefix_12">search would go here</div>
+		<div class="grid_4 search_holder prefix_12">
+      <form action="/intervals" method="GET" id="search_bar">
+	      <label>
+		      Search:
+		      <input type="text" id="global_search" name="search" Placeholder="Enter Query" />
+	      </label>
+	      <input type="submit" id="global_search_submit" />
+      </form>
+    </div>
 		<br style="clear: both"/>
 	</header>
 
@@ -71,10 +79,10 @@
 								<a class="logout_link" href="/logout">Logout</a>
 							<%end%>
 						</div>
-						<div class="grid_4 search_holder prefix_12">
-							<%=link_to "Intervals", intervals_path %>
-							<%= render "intervals/search" %>
-						</div>
+						<!--<div class="grid_4 search_holder prefix_12">
+							<%#=link_to "Intervals", intervals_path %>
+							<%#= render "intervals/search" %>
+						</div>-->
 						<br style="clear: both"/>
 						</header>
 
