@@ -17,7 +17,7 @@ task :vid_import => "videos" do
 end
 
 
-task :sync_vid_db => :environment do
+task :sync_vid_db => [:environment, "public/videos"] do
   puts "Synchronizing DB."
 
   #We are working in the public video's folder
@@ -41,7 +41,11 @@ task :sync_vid_db => :environment do
       else
         #doesn't exist, append a comment saying videos are missing
         puts "Interval <"+itvl.id.to_s+">: Video is Missing."
-        itvl.comments << " Video File is Missing/Non-Existent."
+        if itvl.comments != nil
+          itvl.comments << " Video File is Missing/Non-Existent."
+        else
+          itvl.comments = " Video File is Missing/Non-Existent."
+        end
       end
     else
       #NO file is associated as a video with this interval
